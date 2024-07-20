@@ -1,9 +1,9 @@
-import java.util.List;
+import java.util.ArrayList;
 
 public class Banco {
 
 	private String nome;
-	private List<Conta> contas;
+	private static ArrayList<Conta> contas = new ArrayList<Conta>();
 
 	public String getNome() {
 		return nome;
@@ -13,12 +13,8 @@ public class Banco {
 		this.nome = nome;
 	}
 
-	public List<Conta> getContas() {
+	public ArrayList<Conta> getContas() {
 		return contas;
-	}
-
-	public void setContas(List<Conta> contas) {
-		this.contas = contas;
 	}
 
 }

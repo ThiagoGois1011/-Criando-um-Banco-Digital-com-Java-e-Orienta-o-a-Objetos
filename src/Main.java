@@ -3,16 +3,25 @@ public class Main {
 
 	public static void main(String[] args) {
 		Cliente venilton = new Cliente();
-		venilton.setNome("Venilton");
-		
-		Conta cc = new ContaCorrente(venilton);
-		Conta poupanca = new ContaPoupanca(venilton);
+		Cliente andre = new Cliente();
 
-		cc.depositar(100);
-		cc.transferir(100, poupanca);
+		venilton.setNome("Venilton");
+		andre.setNome("André");
 		
-		cc.imprimirExtrato();
-		poupanca.imprimirExtrato();
+		ContaPoupanca poupancaVenilton = new ContaPoupanca(venilton, "emailTesteVenilton@gmail.com");
+		ContaPoupanca poupancaAndre = new ContaPoupanca(andre, "emailTesteAndre@gmail.com");
+
+		poupancaVenilton.depositar(200);
+
+		poupancaVenilton.imprimirExtrato();
+		poupancaAndre.imprimirExtrato();
+
+		poupancaVenilton.transferenciaPix("emailTesteAndre@gmail.com", 100);
+
+		poupancaVenilton.imprimirExtrato();
+		poupancaAndre.imprimirExtrato();
+		
+		
 	}
 
 }

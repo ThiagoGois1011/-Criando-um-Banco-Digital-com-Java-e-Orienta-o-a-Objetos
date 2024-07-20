@@ -8,11 +8,26 @@ public abstract class Conta implements IConta {
 	protected int numero;
 	protected double saldo;
 	protected Cliente cliente;
+	protected String chavePix;
 
 	public Conta(Cliente cliente) {
 		this.agencia = Conta.AGENCIA_PADRAO;
 		this.numero = SEQUENCIAL++;
 		this.cliente = cliente;
+
+		Banco banco = new Banco();
+
+		banco.getContas().add(this);
+	}
+
+	public Conta(Cliente cliente, String chavePix) {
+		this.agencia = Conta.AGENCIA_PADRAO;
+		this.numero = SEQUENCIAL++;
+		this.cliente = cliente;
+		this.chavePix = chavePix;
+		Banco banco = new Banco();
+
+		banco.getContas().add(this);
 	}
 
 	@Override
@@ -41,6 +56,10 @@ public abstract class Conta implements IConta {
 
 	public double getSaldo() {
 		return saldo;
+	}
+
+	public String getChavePix() {
+		return chavePix;
 	}
 
 	protected void imprimirInfosComuns() {
